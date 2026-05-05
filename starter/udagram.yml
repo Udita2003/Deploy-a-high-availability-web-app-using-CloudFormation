@@ -35,8 +35,8 @@ Resources:
                   - s3:DeleteObject
                   - s3:ListBucket
                 Resource:
-                  - !Sub arn:aws:s3:::${UdagramS3Bucket}
-                  - !Sub arn:aws:s3:::${UdagramS3Bucket}/*
+                  - !Sub arn:aws:s3:::udagram-static-${AWS::AccountId}
+                  - !Sub arn:aws:s3:::udagram-static-${AWS::AccountId}/*
 
   UdagramInstanceProfile:
     Type: AWS::IAM::InstanceProfile
@@ -65,7 +65,7 @@ Resources:
           - Effect: Allow
             Principal: "*"
             Action: s3:GetObject
-            Resource: !Sub arn:aws:s3:::${UdagramS3Bucket}/*
+            Resource: !Sub arn:aws:s3:::udagram-static-${AWS::AccountId}/*
 
   # Security Groups
   LoadBalancerSecGroup:
@@ -104,7 +104,7 @@ Resources:
           ToPort: "-1"
           CidrIp: 0.0.0.0/0
 
-  # Launch Template (keeping their UserData + adding our config)
+  # Launch Template
   WebAppLaunchTemplate:
     Type: AWS::EC2::LaunchTemplate
     Properties:
@@ -128,8 +128,8 @@ Resources:
             sudo apt-get install nginx -y
             sudo apt-get install awscli -y
             service nginx start
-            sleep 10
-            aws s3 cp s3://${UdagramS3Bucket}/index.html /var/www/html/index.html
+            sleep 30
+            aws s3 cp s3://udagram-static-${AWS::AccountId}/index.html /var/www/html/index.html
             service nginx restart
 
   # Auto Scaling Group
