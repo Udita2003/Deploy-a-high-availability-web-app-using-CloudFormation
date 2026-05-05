@@ -80,9 +80,19 @@ aws s3 rm s3://udagram-static-YOUR_ACCOUNT_ID/ --recursive
 ```
 
 ## Evidence
-[Add your Load Balancer URL here after deployment]
+## Evidence
 
-OR add screenshots:
-- Screenshot of CloudFormation stack outputs
-- Screenshot of website via Load Balancer URL
-- Screenshot of S3 bucket with static files
+### Working URL
+http://udagra-WebAp-xTXVlTJfmqUF-793315845.us-east-1.elb.amazonaws.com
+
+### Screenshot 1 - Website via Load Balancer URL
+![Website](diagram/screenshot-website.png)
+
+### Screenshot 2 - Network Stack Outputs
+![Network Stack](diagram/screenshot-network-outputs.png)
+
+### Screenshot 3 - App Stack Outputs
+![App Stack](diagram/screenshot-app-outputs.png)
+
+### Screenshot 4 - S3 Bucket
+![S3 Bucket](diagram/screenshot-s3.png)

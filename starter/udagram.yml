@@ -126,8 +126,9 @@ Resources:
             #!/bin/bash
             apt-get update -y
             sudo apt-get install nginx -y
+            sudo apt-get install awscli -y
             service nginx start
-            apt-get install -y awscli
+            sleep 10
             aws s3 cp s3://${UdagramS3Bucket}/index.html /var/www/html/index.html
             service nginx restart
 
